@@ -1,0 +1,14 @@
+langchain
+langchain-openai
+langchain-community
+langchain_experimental
+crewai
+crewai[tools]
+openai
+pandas
+exa-py
+python-dotenv
+langgraph
+streamlit
+sec_api
+yfinance
