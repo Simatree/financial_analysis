@@ -12,3 +12,7 @@ langgraph
 streamlit
 sec_api
 yfinance
+requests_html
+lxml_html_clean
+unstructured
+faiss_cpu

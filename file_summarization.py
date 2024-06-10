@@ -28,7 +28,7 @@ open_ai_llm = ChatOpenAI(model_name="gpt-4-turbo")
 local_llm = ChatOpenAI(
     openai_api_base="http://192.168.1.158:11434/v1",
     openai_api_key="ollama",
-    model_name="llama3"
+    model_name="phi3:mini"
 )
 
 title = 'AI Document Content Summarizer'
@@ -66,7 +66,9 @@ else:
 
 task_description = st.text_area(
     'Task Description',
-    f"""Given the following input file, summarize the key findings.
+    f"""Given the following SEC 10-Q for Tesla
+    Summarize the key findings.
+    Note anything semi-related to severe risks to audit quality, fraud, restatement or bankruptcy.
     Flag any items that require further detailed analysis.
     """,
     height=200

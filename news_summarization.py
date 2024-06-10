@@ -45,7 +45,7 @@ open_ai_llm = ChatOpenAI(model_name="gpt-4-turbo")
 local_llm = ChatOpenAI(
     openai_api_base="http://192.168.1.158:11434/v1",
     openai_api_key="ollama",                 
-    model_name="llama3"
+    model_name="phi3:mini"
 )
 
 industries = ["Financial Services", "Banking", "Real Estate", "Energy", "Entertainment",

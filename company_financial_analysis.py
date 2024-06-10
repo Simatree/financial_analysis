@@ -29,7 +29,7 @@ open_ai_llm = ChatOpenAI(model_name="gpt-4-turbo")
 local_llm = ChatOpenAI(
     openai_api_base="http://192.168.1.158:11434/v1",
     openai_api_key="ollama",
-    model_name="llama3"
+    model_name="phi3:mini"
 )
 
 st.title(title)
@@ -78,6 +78,7 @@ from tools.browser_tools import BrowserTools
 from tools.calculator_tools import CalculatorTools
 from tools.search_tools import SearchTools
 from tools.sec_tools import SECTools
+from tools.ExaSearchTool import ExaSearchTool
 
 from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool
 
@@ -96,7 +97,10 @@ class StockAnalysisAgents():
                 SearchTools.search_internet,
                 CalculatorTools.calculate,
                 SECTools.search_10q,
-                SECTools.search_10k
+                SECTools.search_10k,
+                ExaSearchTool.search,
+                ExaSearchTool.find_similar,
+                ExaSearchTool.get_contents
             ],
             llm=llm
         )
@@ -117,7 +121,10 @@ class StockAnalysisAgents():
                 SearchTools.search_news,
                 YahooFinanceNewsTool(),
                 SECTools.search_10q,
-                SECTools.search_10k
+                SECTools.search_10k,
+                ExaSearchTool.search,
+                ExaSearchTool.find_similar,
+                ExaSearchTool.get_contents
             ],
             llm=llm
     )
@@ -152,7 +159,6 @@ class StockAnalysisTasks():
         Pay special attention to any significant events, market
         sentiments, and analysts' opinions. Also include upcoming 
         events like earnings and others.
-  
         Selected company by the customer: {companyName}
       """),
       expected_output=dedent("""
